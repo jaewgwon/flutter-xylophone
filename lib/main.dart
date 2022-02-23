@@ -38,27 +38,23 @@ class XylophoneApp extends StatelessWidget {
 
 class Note extends StatelessWidget {
   //StatelessWidget constructor
-  Note(this.noteNumber, this.noteColor, this.label);
+  Note(this.noteNumber, this.noteColor, this.noteLabel);
   final int noteNumber;
   final Color noteColor;
-  final String label;
+  final String noteLabel;
 
   static AudioCache player = AudioCache();
+
   @override
   Widget build(BuildContext context) {
-    Future<AudioPlayer> Function(int) play =
-        (int number) => player.play('note$number.wav');
-    MaterialStateProperty<Color> Function(Color) getColor =
-        (Color color) => MaterialStateProperty.all<Color>(color);
-
     return Expanded(
       child: TextButton(
         style: ButtonStyle(
-          backgroundColor: getColor(noteColor),
+          backgroundColor: MaterialStateProperty.all<Color>(noteColor),
         ),
-        onPressed: () => play(noteNumber),
+        onPressed: () => player.play('note$noteNumber.wav'),
         child: Text(
-          label,
+          noteLabel,
           style: TextStyle(
             fontSize: 40,
             color: Colors.white70,
