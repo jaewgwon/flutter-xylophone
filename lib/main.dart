@@ -4,11 +4,6 @@ import 'package:audioplayers/audioplayers.dart';
 void main() => runApp(XylophoneApp());
 
 class XylophoneApp extends StatelessWidget {
-  static AudioCache player = AudioCache();
-
-  final play = (int number) => player.play('note$number.wav');
-  final getColor = (Color color) => MaterialStateProperty.all<Color>(color);
-
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
